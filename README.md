@@ -12,12 +12,12 @@ If you *are* a developer, skip to [For developers](#for-developers).
 
 **What it is not:**
 
-- **Not a KYC or AML certification.** The Audit Record is an internal stop record. Photographing a poster is not certifying a customer, not a CDD file, and not a substitute for whatever the telco's compliance team requires. There is no signature field on purpose: on ZenSched a signature replaces the Submit button, and submitting this form must not look like anyone signed a legal document.
+- **Not a telco or central-bank official KYC / AML / CICO record.** The Audit Record is an internal stop record. It is not a CBK, Bank of Tanzania, Bangladesh Bank, SBP, or CBN filing, not the principal's AML procedures file, and not a cash-in / cash-out ledger. Photographing a poster is not certifying a customer and not a CDD file. Do not tell an examiner "it's in ZenSched." There is no signature field on purpose: on ZenSched a signature replaces the Submit button, and submitting this form must not look like anyone signed a legal document.
 - **Not a float-reconciliation or settlement system.** `float_count` is what the auditor typed. It is not a wallet-balance pull, not a till close, and not a cash-in / cash-out ledger.
 - **Not a client portal or auditor marketplace.** Clients never log in. You bring the people; the kit tracks their reliability locally.
 - **Agent names and till numbers never leave your computer.** ZenSched only ever sees a de-identified shop label (`Stop 12 - Ngong Rd`) and the street address. The AI is forbidden from putting a till number, an agent name, or a wallet ID into any ZenSched field.
 
-If you need a signed KYC attestation, a live wallet API, or a telco login portal, this kit is not for you. If you need enforceable proof-of-visit for a few dozen shop audits a month and an assistant that keeps the books, read on.
+If you need a signed KYC attestation, a central-bank return, a live wallet API, or a telco login portal, this kit is not for you. If you need enforceable proof-of-visit for a few dozen shop audits a month and an assistant that keeps the books, read on.
 
 ## What lives where
 
@@ -204,7 +204,7 @@ When you invite an auditor, they get an email, install the app, and can immediat
 | A visit is flagged but the telco is fine with it | Working as intended; flags are for you, not automatic rejections | Approve it and put the reason in the QA note |
 | Same shop pasted twice in a list | Address written differently | The AI normalizes addresses; if it still created two shops, say "these are the same shop" and it merges them (one geocode is wasted, $0.03) |
 | AI asks you to run SQL yourself | It does not have `SKILL.md` loaded | Re-paste `SKILL.md` as project instructions |
-| AI offers a signed KYC certificate or a wallet-balance pull | It shouldn't | This kit does not produce those |
+| AI offers a signed KYC certificate, a wallet-balance pull, or a CBK / BOT / CBN filing | It shouldn't | This kit is not a telco or central-bank official KYC / AML record |
 
 If something is confusing or broken in ZenSched itself, ask the AI to call `feedback_submit` with a description. It is free, needs no account, and a human reads every submission.
 

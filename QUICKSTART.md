@@ -4,7 +4,7 @@ Setup is about 15 minutes, once. After that everything is plain English to your 
 
 You need: Claude Desktop (or Cursor) and [Node.js LTS](https://nodejs.org/) installed. Nothing else.
 
-Before you start, read the "What this kit is not" section of `README.md`. Short version: this is GPS-verified shop-visit proof plus a local extract of the Audit Record (float, branding, KYC poster, shopfront). It is **not** a KYC certificate, not a wallet-balance pull, and not a signed legal document. Agent names and till numbers stay on your computer.
+Before you start, read the "What this kit is not" section of `README.md`. Short version: this is GPS-verified shop-visit proof plus a local extract of the Audit Record (float, branding, KYC poster, shopfront). It is **not** a telco or central-bank official KYC / AML / CICO record (not a CBK, BOT, Bangladesh Bank, SBP, or CBN filing), not a wallet-balance pull, and not a signed legal document. Agent names and till numbers stay on your computer.
 
 ## 1. Make a data folder
 
