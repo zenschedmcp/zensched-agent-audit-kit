@@ -50,7 +50,7 @@ form_create:
 ```json
 [
   {"type": "section", "label": "Audit record", "identifier": "sec_audit",
-   "text": "Count the visible cash float, photograph the KYC poster and the shopfront. Do not write the agent's name or till number on this form."},
+   "text": "Count the visible cash float, photograph the KYC poster and the shopfront. Do not write the agent's name or till number on this form. This is not a telco or central-bank KYC/AML record."},
   {"type": "number", "label": "Float count", "identifier": "float_count", "required": true},
   {"type": "select", "label": "Branding OK", "identifier": "branding_ok", "required": true,
    "options": ["Yes", "No", "Partial"]},
@@ -65,7 +65,7 @@ form_create:
 sqlite_execute: UPDATE settings SET value = '501' WHERE key = 'audit_record_form_id';
 ```
 
-> Audit Record form created. I'll attach it to every shop automatically. Float count, branding Yes/No/Partial, KYC poster (up to 2), shopfront (1). There is no signature step — submitting is not a KYC certification.
+> Audit Record form created. I'll attach it to every shop automatically. Float count, branding Yes/No/Partial, KYC poster (up to 2), shopfront (1). There is no signature step — this is not a telco or central-bank official KYC / AML record.
 
 ## "New program. Client is PesaNet, contact Wanjiku Mwangi, wanjiku@pesanet.example, billing ap@pesanet.example, net 30. Weekday shop audits, one per agent, 8 to 6, Sep 8 through Sep 30. $8 per visit to them, auditors get $3. Visits should take at least 8 minutes. Agents: Fatuma Hassan, till 884211, 14 Ngong Road, Nairobi / Joseph Otieno, till 552190, Tom Mboya Street, Nairobi / Chidi Okonkwo, till NG-44081, 22 Allen Avenue, Ikeja, Lagos. Brief: count the visible float, photograph the KYC poster and the shopfront, mark branding."
 
@@ -292,18 +292,26 @@ form_export:
   → row_count: 3, rows: [
       { submission_id: 5501, worker_id: 601, event_id: 7301, submitted_at: "2026-09-14 09:16:40",
         data: { float_count: 18400, branding_ok: "yes" },
-        media: [ { identifier: "kyc_poster", cdn_url: "https://cdn.zensched.com/m/.../k1.jpg" },
-                 { identifier: "kyc_poster", cdn_url: "https://cdn.zensched.com/m/.../k2.jpg" },
-                 { identifier: "shopfront",  cdn_url: "https://cdn.zensched.com/m/.../s1.jpg" } ] },
+        media: [ { field_id: 4, cdn_url: "https://cdn.zensched.com/m/.../k1.jpg",
+                   thumbnail_url: "https://cdn.zensched.com/m/.../k1_thumb.jpg", original_filename: "k1.jpg" },
+                 { field_id: 4, cdn_url: "https://cdn.zensched.com/m/.../k2.jpg",
+                   thumbnail_url: "https://cdn.zensched.com/m/.../k2_thumb.jpg", original_filename: "k2.jpg" },
+                 { field_id: 5, cdn_url: "https://cdn.zensched.com/m/.../s1.jpg",
+                   thumbnail_url: "https://cdn.zensched.com/m/.../s1_thumb.jpg", original_filename: "s1.jpg" } ] },
       { submission_id: 5502, worker_id: 601, event_id: 7302, submitted_at: "2026-09-15 09:15:12",
         data: { float_count: 9250, branding_ok: "yes" },
-        media: [ { identifier: "kyc_poster", cdn_url: "https://cdn.zensched.com/m/.../k3.jpg" },
-                 { identifier: "kyc_poster", cdn_url: "https://cdn.zensched.com/m/.../k4.jpg" },
-                 { identifier: "shopfront",  cdn_url: "https://cdn.zensched.com/m/.../s2.jpg" } ] },
+        media: [ { field_id: 4, cdn_url: "https://cdn.zensched.com/m/.../k3.jpg",
+                   thumbnail_url: "https://cdn.zensched.com/m/.../k3_thumb.jpg", original_filename: "k3.jpg" },
+                 { field_id: 4, cdn_url: "https://cdn.zensched.com/m/.../k4.jpg",
+                   thumbnail_url: "https://cdn.zensched.com/m/.../k4_thumb.jpg", original_filename: "k4.jpg" },
+                 { field_id: 5, cdn_url: "https://cdn.zensched.com/m/.../s2.jpg",
+                   thumbnail_url: "https://cdn.zensched.com/m/.../s2_thumb.jpg", original_filename: "s2.jpg" } ] },
       { submission_id: 5503, worker_id: 602, event_id: 7303, submitted_at: "2026-09-15 10:17:05",
         data: { float_count: 6200, branding_ok: "partial" },
-        media: [ { identifier: "kyc_poster", cdn_url: "https://cdn.zensched.com/m/.../k5.jpg" },
-                 { identifier: "shopfront",  cdn_url: "https://cdn.zensched.com/m/.../s3.jpg" } ] }
+        media: [ { field_id: 4, cdn_url: "https://cdn.zensched.com/m/.../k5.jpg",
+                   thumbnail_url: "https://cdn.zensched.com/m/.../k5_thumb.jpg", original_filename: "k5.jpg" },
+                 { field_id: 5, cdn_url: "https://cdn.zensched.com/m/.../s3.jpg",
+                   thumbnail_url: "https://cdn.zensched.com/m/.../s3_thumb.jpg", original_filename: "s3.jpg" } ] }
     ]
     billing: { meter: "form_media", units: 3, price: 0.45 }
 
